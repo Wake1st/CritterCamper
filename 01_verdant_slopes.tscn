@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnfnbbqfxv41j"]
+
+[ext_resource type="PackedScene" uid="uid://btekk4skkt6cm" path="res://camp_ground.tscn" id="1_qwaiu"]
+[ext_resource type="PackedScene" uid="uid://isdu5vwd4mt3" path="res://player.tscn" id="2_axsbw"]
+[ext_resource type="PackedScene" uid="uid://ki6c2md6f5sh" path="res://tent.tscn" id="3_tvwca"]
+
+[sub_resource type="Environment" id="Environment_g84ct"]
+background_mode = 1
+background_color = Color(0.729412, 0.811765, 1, 1)
+ambient_light_color = Color(0.0666667, 0.956863, 1, 1)
+
+[node name="01_VerdantSlopes" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_g84ct")
+
+[node name="CampGround" parent="." instance=ExtResource("1_qwaiu")]
+
+[node name="Player" parent="." instance=ExtResource("2_axsbw")]
+
+[node name="Tent" parent="." instance=ExtResource("3_tvwca")]
+transform = Transform3D(0.483313, 0, 0.875448, 0, 1, 0, -0.875448, 0, 0.483313, -4.95828, 2.38419e-07, -4.87914)

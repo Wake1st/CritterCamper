@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://isdu5vwd4mt3"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_auv8u"]
+[ext_resource type="Script" path="res://Controls.gd" id="2_rxsm6"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ej6jw"]
+radius = 0.4
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ivah2"]
+radius = 0.3
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("controlCapture")]
+script = ExtResource("1_auv8u")
+controlCapture = NodePath("Controls")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_ej6jw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_ivah2")
+
+[node name="CameraPivot" type="Node3D" parent="."]
+
+[node name="Camera" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 3, 3)
+
+[node name="Controls" type="Node" parent="."]
+script = ExtResource("2_rxsm6")

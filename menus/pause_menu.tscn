@@ -44,8 +44,8 @@ text = "Options
 [node name="Menu" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Options")
-focus_neighbor_bottom = NodePath(".")
-focus_next = NodePath(".")
+focus_neighbor_bottom = NodePath("../Quit")
+focus_next = NodePath("../Quit")
 focus_previous = NodePath("../Options")
 text = "Menu"
 

@@ -22,6 +22,7 @@ var paused:= false:
 
 func _ready():
 	currentLevel = get_child(0)
+	currentMenu = $CanvasLayer.get_child(0)
 
 
 func _input(event:InputEvent):
@@ -30,16 +31,19 @@ func _input(event:InputEvent):
 
 
 func select_level(file:String):
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	reset_level(file,pauseMenu)
+	currentLevel.gameManager = self
 
 
 func main_level():
 	reset_level("res://levels/00_main_level.tscn",mainMenu)
 	paused = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 
 
 func reset_level(file:String,menu:PackedScene):
-	remove_child(currentLevel)
+	call_deferred("remove_child", currentLevel)
 	currentLevel = load(file).instantiate()
 	add_child(currentLevel)
 	

@@ -23,3 +23,6 @@ func _physics_process(delta):
 	
 	velocity = global_transform.basis * controls.direction * speed * delta
 	move_and_slide()
+	
+	if controls.action:
+		%BuildPoint.placed = !%BuildPoint.placed

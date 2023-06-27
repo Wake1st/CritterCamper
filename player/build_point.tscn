@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://djussbbdgfdsk"]
+
+[ext_resource type="Script" path="res://player/build_point.gd" id="1_ojyb0"]
+
+[node name="BuildPoint" type="Node3D"]
+script = ExtResource("1_ojyb0")

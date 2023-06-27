@@ -7,6 +7,7 @@ extends Control
 func _ready():
 	hide()
 	gameManager.connect("toggle_pause", _on_game_manager_toggle_pause)
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 
 func _on_resume_pressed():
@@ -28,6 +29,8 @@ func _on_quit_pressed():
 func _on_game_manager_toggle_pause(pausing:bool):
 	if pausing:
 		show()
+		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 		$VBoxContainer/Resume.grab_focus()
 	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		hide()

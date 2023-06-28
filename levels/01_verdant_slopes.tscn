@@ -1,10 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dnfnbbqfxv41j"]
+[gd_scene load_steps=7 format=3 uid="uid://d0lxgrqddtudb"]
 
 [ext_resource type="Script" path="res://levels/01_verdant_slopes.gd" id="1_aevsk"]
 [ext_resource type="PackedScene" uid="uid://btekk4skkt6cm" path="res://camp_ground.tscn" id="1_dosqa"]
-[ext_resource type="PackedScene" uid="uid://isdu5vwd4mt3" path="res://player.tscn" id="2_y3av3"]
-[ext_resource type="PackedScene" uid="uid://ki6c2md6f5sh" path="res://tent.tscn" id="3_o26fa"]
+[ext_resource type="PackedScene" uid="uid://b5bboklyil8t1" path="res://player/player.tscn" id="2_y3av3"]
 [ext_resource type="PackedScene" uid="uid://dgba7pf3blkj" path="res://entry.tscn" id="5_76kv4"]
+[ext_resource type="Script" path="res://levels/BuildManager.gd" id="6_j4p5o"]
 
 [sub_resource type="Environment" id="Environment_g84ct"]
 background_mode = 1
@@ -22,11 +22,16 @@ environment = SubResource("Environment_g84ct")
 
 [node name="Player" parent="." instance=ExtResource("2_y3av3")]
 
-[node name="Tent" parent="." instance=ExtResource("3_o26fa")]
-transform = Transform3D(0.483313, 0, 0.875448, 0, 1, 0, -0.875448, 0, 0.483313, -4.95828, 2.38419e-07, -4.87914)
-
 [node name="Entry" parent="." instance=ExtResource("5_76kv4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13)
 
 [node name="PlayerSpawn" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+
+[node name="BuildManager" type="Node3D" parent="."]
+script = ExtResource("6_j4p5o")
+
+[connection signal="placed_item" from="Player/BuildPoint" to="BuildManager" method="_on_build_point_placed_item"]
+[connection signal="removed_item" from="Player/BuildPoint" to="BuildManager" method="_on_build_point_removed_item"]
+
+[editable path="Player"]

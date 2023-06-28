@@ -4,6 +4,9 @@ extends Node
 var direction:= Vector3.ZERO
 var rotation:= Vector2.ZERO
 
+var action:bool = false
+var undo:bool = false
+
 
 func _capture()->Controls:
 	direction = Vector3.ZERO
@@ -17,5 +20,8 @@ func _capture()->Controls:
 	var screenSize = viewport.get_visible_rect().size
 	rotation.x = -(mousePos.x - screenSize.x / 2) / screenSize.x
 	rotation.y = -(mousePos.y - screenSize.y / 2) / screenSize.y
+	
+	action = Input.is_action_just_pressed("action")
+	undo = Input.is_action_just_pressed("undo_action")
 	
 	return self

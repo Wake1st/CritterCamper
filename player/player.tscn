@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://isdu5vwd4mt3"]
+[gd_scene load_steps=6 format=3 uid="uid://b5bboklyil8t1"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_auv8u"]
-[ext_resource type="Script" path="res://Controls.gd" id="2_rxsm6"]
+[ext_resource type="Script" path="res://player/player.gd" id="1_gnnkl"]
+[ext_resource type="Script" path="res://player/Controls.gd" id="2_gn764"]
+[ext_resource type="PackedScene" uid="uid://djussbbdgfdsk" path="res://player/build_point.tscn" id="3_vpepl"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ej6jw"]
 radius = 0.4
@@ -9,8 +10,8 @@ radius = 0.4
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ivah2"]
 radius = 0.3
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("controlCapture")]
-script = ExtResource("1_auv8u")
+[node name="Character" type="CharacterBody3D" node_paths=PackedStringArray("controlCapture")]
+script = ExtResource("1_gnnkl")
 controlCapture = NodePath("Controls")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -27,4 +28,8 @@ mesh = SubResource("CapsuleMesh_ivah2")
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 3, 3)
 
 [node name="Controls" type="Node" parent="."]
-script = ExtResource("2_rxsm6")
+script = ExtResource("2_gn764")
+
+[node name="BuildPoint" parent="." instance=ExtResource("3_vpepl")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)

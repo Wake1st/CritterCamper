@@ -5,6 +5,7 @@ var direction:= Vector3.ZERO
 var rotation:= Vector2.ZERO
 
 var action:bool = false
+var undo:bool = false
 
 
 func _capture()->Controls:
@@ -21,5 +22,6 @@ func _capture()->Controls:
 	rotation.y = -(mousePos.y - screenSize.y / 2) / screenSize.y
 	
 	action = Input.is_action_just_pressed("action")
+	undo = Input.is_action_just_pressed("undo_action")
 	
 	return self

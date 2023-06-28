@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://djussbbdgfdsk"]
+[gd_scene load_steps=4 format=3 uid="uid://djussbbdgfdsk"]
 
 [ext_resource type="Script" path="res://player/build_point.gd" id="1_ojyb0"]
+[ext_resource type="Material" uid="uid://do82srreht78b" path="res://buildSilhouette.tres" id="2_u4um4"]
+[ext_resource type="PackedScene" uid="uid://ki6c2md6f5sh" path="res://tent.tscn" id="3_3575k"]
 
 [node name="BuildPoint" type="Node3D"]
 script = ExtResource("1_ojyb0")
+buildSilhouette = ExtResource("2_u4um4")
+pack = ExtResource("3_3575k")

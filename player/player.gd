@@ -25,4 +25,13 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	if controls.action:
-		%BuildPoint.placed = !%BuildPoint.placed
+		if %BuildPoint.placing:
+			var placed = !%BuildPoint.placed
+			%BuildPoint.placed = placed
+			%BuildPoint.placing = !placed
+		else:
+			%BuildPoint.placing = true
+	
+	if controls.undo:
+		if %BuildPoint.placing:
+			%BuildPoint.placing = false

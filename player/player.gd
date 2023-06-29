@@ -9,9 +9,24 @@ extends CharacterBody3D
 
 @export var controlCapture:Controls
 
+var sleeping:= false:
+	get:
+		return sleeping
+	set(value):
+		sleeping = value
+		if sleeping:
+			Engine.time_scale = 60
+		else:
+			Engine.time_scale = 1
+
 
 func _physics_process(delta):
 	var controls = controlCapture._capture()
+	if sleeping:
+		return
+	
+	if controls.sleep:
+		sleeping = true
 	
 	rotation.y = controls.rotation.x * rotMag.y
 	$CameraPivot.rotation.x = controls.rotation.y * rotMag.x
@@ -35,3 +50,7 @@ func _physics_process(delta):
 	if controls.undo:
 		if %BuildPoint.placing:
 			%BuildPoint.placing = false
+
+
+func _on_alarm_timeout():
+	sleeping = false

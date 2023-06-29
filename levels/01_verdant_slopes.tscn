@@ -5,18 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://b5bboklyil8t1" path="res://player/player.tscn" id="2_y3av3"]
 [ext_resource type="PackedScene" uid="uid://dgba7pf3blkj" path="res://entry.tscn" id="5_76kv4"]
 [ext_resource type="Script" path="res://levels/BuildManager.gd" id="6_j4p5o"]
-
-[sub_resource type="Environment" id="Environment_g84ct"]
-background_mode = 1
-background_color = Color(0.729412, 0.811765, 1, 1)
-ambient_light_color = Color(0.0666667, 0.956863, 1, 1)
+[ext_resource type="PackedScene" uid="uid://bsigtaboy2luy" path="res://sky.tscn" id="6_tueyb"]
 
 [node name="01_VerdantSlopes" type="Node3D"]
 process_mode = 1
 script = ExtResource("1_aevsk")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_g84ct")
 
 [node name="CampGround" parent="." instance=ExtResource("1_dosqa")]
 
@@ -30,6 +23,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 
 [node name="BuildManager" type="Node3D" parent="."]
 script = ExtResource("6_j4p5o")
+
+[node name="Sky" parent="." instance=ExtResource("6_tueyb")]
 
 [connection signal="placed_item" from="Player/BuildPoint" to="BuildManager" method="_on_build_point_placed_item"]
 [connection signal="removed_item" from="Player/BuildPoint" to="BuildManager" method="_on_build_point_removed_item"]

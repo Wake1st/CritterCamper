@@ -13,7 +13,7 @@ var placed:=false:
 		return placed
 	set(value):
 		placed = value
-		if value:
+		if placed:
 			emit_signal("placed_item", pack, global_transform)
 		else:
 			emit_signal("removed_item", pack)
@@ -25,8 +25,10 @@ var placing:=false:
 	set(value):
 		placing = value
 		if placing:
+			print("place silhouette")
 			add_child(silhouette)
 		else:
+			print("remove silhouette")
 			remove_child(silhouette)
 
 

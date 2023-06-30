@@ -1,8 +1,7 @@
 extends Node
 
 
-@export var startHour:float = 12.0
-@export var secPerHour:float = 60.0
+@export var clock:Timer
 
 
 func _ready():
@@ -11,5 +10,5 @@ func _ready():
 
 
 func setup_animations(anim:AnimationPlayer):
-	anim.seek(startHour)
-	anim.speed_scale = 1.0/secPerHour
+	anim.seek(clock.startHour)
+	anim.speed_scale = 1.0/clock.secPerHour

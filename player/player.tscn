@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b5bboklyil8t1"]
+[gd_scene load_steps=7 format=3 uid="uid://b5bboklyil8t1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_gnnkl"]
 [ext_resource type="Script" path="res://player/Controls.gd" id="2_gn764"]
 [ext_resource type="PackedScene" uid="uid://djussbbdgfdsk" path="res://player/build_point.tscn" id="3_vpepl"]
+[ext_resource type="PackedScene" uid="uid://dvauc7nyk0at6" path="res://ui_feedback.tscn" id="4_2ljgh"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ej6jw"]
 radius = 0.4
@@ -33,3 +34,10 @@ script = ExtResource("2_gn764")
 [node name="BuildPoint" parent="." instance=ExtResource("3_vpepl")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+
+[node name="UIFeedback" parent="." instance=ExtResource("4_2ljgh")]
+
+[connection signal="asleep" from="." to="UIFeedback" method="_on_character_asleep"]
+[connection signal="awake" from="." to="UIFeedback" method="_on_character_awake"]
+[connection signal="placed_item" from="BuildPoint" to="UIFeedback" method="_on_build_point_placed_item"]
+[connection signal="removed_item" from="BuildPoint" to="UIFeedback" method="_on_build_point_removed_item"]

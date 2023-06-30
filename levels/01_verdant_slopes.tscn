@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://d0lxgrqddtudb"]
+[gd_scene load_steps=9 format=3 uid="uid://h0emtaxcog7k"]
 
 [ext_resource type="Script" path="res://levels/01_verdant_slopes.gd" id="1_aevsk"]
 [ext_resource type="PackedScene" uid="uid://btekk4skkt6cm" path="res://camp_ground.tscn" id="1_dosqa"]
 [ext_resource type="PackedScene" uid="uid://b5bboklyil8t1" path="res://player/player.tscn" id="2_y3av3"]
 [ext_resource type="PackedScene" uid="uid://dgba7pf3blkj" path="res://entry.tscn" id="5_76kv4"]
-[ext_resource type="Script" path="res://levels/BuildManager.gd" id="6_j4p5o"]
+[ext_resource type="Script" path="res://BuildManager.gd" id="5_x0pcy"]
 [ext_resource type="PackedScene" uid="uid://bsigtaboy2luy" path="res://sky.tscn" id="6_tueyb"]
-[ext_resource type="Script" path="res://levels/Clock.gd" id="7_8kxa7"]
+[ext_resource type="Script" path="res://clock.gd" id="7_llj6x"]
+[ext_resource type="Script" path="res://levels/alarm.gd" id="8_x7f7x"]
 
 [node name="01_VerdantSlopes" type="Node3D"]
 process_mode = 1
@@ -23,17 +24,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 
 [node name="BuildManager" type="Node3D" parent="."]
-script = ExtResource("6_j4p5o")
+script = ExtResource("5_x0pcy")
 
-[node name="Sky" parent="." instance=ExtResource("6_tueyb")]
+[node name="Sky" parent="." node_paths=PackedStringArray("clock") instance=ExtResource("6_tueyb")]
+clock = NodePath("../Clock")
+
+[node name="Clock" type="Timer" parent="."]
+wait_time = 1440.0
+script = ExtResource("7_llj6x")
 
 [node name="Alarm" type="Timer" parent="."]
-wait_time = 1080.0
-autostart = true
-script = ExtResource("7_8kxa7")
+script = ExtResource("8_x7f7x")
 
 [connection signal="placed_item" from="Player/BuildPoint" to="BuildManager" method="_on_build_point_placed_item"]
 [connection signal="removed_item" from="Player/BuildPoint" to="BuildManager" method="_on_build_point_removed_item"]
+[connection signal="setSecPerDay" from="Clock" to="Alarm" method="_on_clock_set_sec_per_day"]
+[connection signal="time_tick" from="Clock" to="Player/UIFeedback" method="_on_clock_time_tick"]
+[connection signal="timeout" from="Clock" to="Clock" method="_on_timeout"]
 [connection signal="timeout" from="Alarm" to="Player" method="_on_alarm_timeout"]
 
 [editable path="Player"]

@@ -1,6 +1,10 @@
 extends CharacterBody3D
 
 
+signal asleep
+signal awake
+
+
 @export var speed:float = 280.0
 @export var rotMag:= Vector2(1.2,6.0)
 
@@ -9,24 +13,28 @@ extends CharacterBody3D
 
 @export var controlCapture:Controls
 
+
 var sleeping:= false:
 	get:
 		return sleeping
 	set(value):
 		sleeping = value
 		if sleeping:
+			emit_signal("asleep")
 			Engine.time_scale = 60
 		else:
+			emit_signal("awake")
 			Engine.time_scale = 1
 
 
 func _physics_process(delta):
 	var controls = controlCapture._capture()
-	if sleeping:
-		return
 	
 	if controls.sleep:
-		sleeping = true
+		sleeping = !sleeping
+	
+	if sleeping:
+		return
 	
 	rotation.y = controls.rotation.x * rotMag.y
 	$CameraPivot.rotation.x = controls.rotation.y * rotMag.x

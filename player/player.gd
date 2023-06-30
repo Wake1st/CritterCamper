@@ -43,7 +43,7 @@ func _physics_process(delta):
 		if %BuildPoint.placing:
 			var placed = !%BuildPoint.placed
 			%BuildPoint.placed = placed
-			%BuildPoint.placing = !placed
+			%BuildPoint.placing = false
 		else:
 			%BuildPoint.placing = true
 	

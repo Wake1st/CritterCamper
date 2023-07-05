@@ -1,9 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://c5g6lc5frcynk"]
+[gd_scene load_steps=10 format=3 uid="uid://cr1t47p6gtx6l"]
 
 [ext_resource type="Script" path="res://levels/01_verdant_slopes.gd" id="1_aevsk"]
 [ext_resource type="PackedScene" uid="uid://btekk4skkt6cm" path="res://camp_ground.tscn" id="1_dosqa"]
 [ext_resource type="PackedScene" uid="uid://b5bboklyil8t1" path="res://player/player.tscn" id="2_y3av3"]
-[ext_resource type="Script" path="res://systems/BuildManager.gd" id="5_1jtdg"]
+[ext_resource type="Script" path="res://building/BuildManager.gd" id="5_3wca5"]
 [ext_resource type="PackedScene" uid="uid://dgba7pf3blkj" path="res://entry.tscn" id="5_76kv4"]
 [ext_resource type="PackedScene" uid="uid://bsigtaboy2luy" path="res://sky.tscn" id="6_tueyb"]
 [ext_resource type="Script" path="res://levels/clock.gd" id="7_bx4t5"]
@@ -25,7 +25,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 
 [node name="BuildManager" type="Node3D" parent="."]
-script = ExtResource("5_1jtdg")
+script = ExtResource("5_3wca5")
 
 [node name="Sky" parent="." node_paths=PackedStringArray("clock") instance=ExtResource("6_tueyb")]
 clock = NodePath("../Clock")

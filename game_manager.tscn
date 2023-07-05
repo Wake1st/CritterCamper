@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://d4baexpwier6t"]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://GameManager.gd" id="1_bwtcj"]
 [ext_resource type="PackedScene" uid="uid://08t5uqtptjkl" path="res://levels/00_main_level.tscn" id="2_imauc"]
-[ext_resource type="PackedScene" uid="uid://oxm40yvnt1es" path="res://menus/main_menu.tscn" id="3_i4dmh"]
-[ext_resource type="PackedScene" uid="uid://dnqfxe41cc4f3" path="res://menus/pause_menu.tscn" id="3_qqvtb"]
+[ext_resource type="PackedScene" path="res://ui/menus/main_menu.tscn" id="3_i4dmh"]
+[ext_resource type="PackedScene" path="res://ui/menus/pause_menu.tscn" id="3_qqvtb"]
 
 [node name="GameManager" type="Node"]
 process_mode = 3

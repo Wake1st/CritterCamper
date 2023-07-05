@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://h0emtaxcog7k"]
+[gd_scene load_steps=10 format=3 uid="uid://4pugkdillhx4"]
 
 [ext_resource type="Script" path="res://levels/01_verdant_slopes.gd" id="1_aevsk"]
 [ext_resource type="PackedScene" uid="uid://btekk4skkt6cm" path="res://camp_ground.tscn" id="1_dosqa"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dgba7pf3blkj" path="res://entry.tscn" id="5_76kv4"]
 [ext_resource type="Script" path="res://BuildManager.gd" id="5_x0pcy"]
 [ext_resource type="PackedScene" uid="uid://bsigtaboy2luy" path="res://sky.tscn" id="6_tueyb"]
-[ext_resource type="Script" path="res://clock.gd" id="7_llj6x"]
+[ext_resource type="Script" path="res://levels/clock.gd" id="7_bx4t5"]
 [ext_resource type="Script" path="res://levels/alarm.gd" id="8_x7f7x"]
 [ext_resource type="PackedScene" uid="uid://kc8plv763vr8" path="res://critter.tscn" id="9_5cl00"]
 
@@ -32,7 +32,7 @@ clock = NodePath("../Clock")
 
 [node name="Clock" type="Timer" parent="."]
 wait_time = 1440.0
-script = ExtResource("7_llj6x")
+script = ExtResource("7_bx4t5")
 
 [node name="Alarm" type="Timer" parent="."]
 script = ExtResource("8_x7f7x")

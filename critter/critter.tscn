@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://e251fryoqay5"]
 
 [ext_resource type="Script" path="res://critter/critter.gd" id="1_e4ffa"]
 [ext_resource type="PackedScene" uid="uid://bebbe8jlupwhx" path="res://critter/critter.glb" id="2_tbucm"]
@@ -6,6 +6,8 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_b284j"]
 
 [node name="critter" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("1_e4ffa")
 
 [node name="critter" parent="." instance=ExtResource("2_tbucm")]

@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://player/build_point.gd" id="1_ojyb0"]
 [ext_resource type="Material" uid="uid://do82srreht78b" path="res://building/buildSilhouette.tres" id="2_8rfgc"]
-[ext_resource type="PackedScene" uid="uid://ki6c2md6f5sh" path="res://tent.tscn" id="3_3575k"]
+[ext_resource type="PackedScene" uid="uid://ufpeap5elo87" path="res://tent/tent.tscn" id="3_kwc5x"]
 
 [node name="BuildPoint" type="Node3D"]
 script = ExtResource("1_ojyb0")
 buildSilhouette = ExtResource("2_8rfgc")
-pack = ExtResource("3_3575k")
+pack = ExtResource("3_kwc5x")

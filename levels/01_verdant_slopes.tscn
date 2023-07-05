@@ -1,14 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://cr1t47p6gtx6l"]
+[gd_scene load_steps=10 format=3 uid="uid://djnlnuu22dofm"]
 
 [ext_resource type="Script" path="res://levels/01_verdant_slopes.gd" id="1_aevsk"]
 [ext_resource type="PackedScene" uid="uid://btekk4skkt6cm" path="res://camp_ground.tscn" id="1_dosqa"]
 [ext_resource type="PackedScene" uid="uid://b5bboklyil8t1" path="res://player/player.tscn" id="2_y3av3"]
 [ext_resource type="Script" path="res://building/BuildManager.gd" id="5_3wca5"]
 [ext_resource type="PackedScene" uid="uid://dgba7pf3blkj" path="res://entry.tscn" id="5_76kv4"]
-[ext_resource type="PackedScene" uid="uid://bsigtaboy2luy" path="res://sky.tscn" id="6_tueyb"]
+[ext_resource type="PackedScene" path="res://sky.tscn" id="6_tueyb"]
 [ext_resource type="Script" path="res://levels/clock.gd" id="7_bx4t5"]
 [ext_resource type="Script" path="res://levels/alarm.gd" id="8_x7f7x"]
-[ext_resource type="PackedScene" uid="uid://kc8plv763vr8" path="res://critter.tscn" id="9_5cl00"]
+[ext_resource type="PackedScene" path="res://critter/critter.tscn" id="9_4cxjr"]
 
 [node name="01_VerdantSlopes" type="Node3D"]
 process_mode = 1
@@ -37,21 +37,14 @@ script = ExtResource("7_bx4t5")
 [node name="Alarm" type="Timer" parent="."]
 script = ExtResource("8_x7f7x")
 
-[node name="critter" parent="." instance=ExtResource("9_5cl00")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.89643, 0, -5.58595)
-motion_mode = 1
+[node name="critter" parent="." instance=ExtResource("9_4cxjr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.74576, 0, -3.44824)
 
-[node name="critter2" parent="." instance=ExtResource("9_5cl00")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.61382, 0, 4.72806)
-motion_mode = 1
+[node name="critter2" parent="." instance=ExtResource("9_4cxjr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.73208, 0, 2.35844)
 
-[node name="critter3" parent="." instance=ExtResource("9_5cl00")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.91932, 0, -3.34896)
-motion_mode = 1
-
-[node name="critter4" parent="." instance=ExtResource("9_5cl00")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.19206, 0, -11.3132)
-motion_mode = 1
+[node name="critter3" parent="." instance=ExtResource("9_4cxjr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.89252, 0, -6.66817)
 
 [connection signal="placed_item" from="Player/BuildPoint" to="BuildManager" method="_on_build_point_placed_item"]
 [connection signal="removed_item" from="Player/BuildPoint" to="BuildManager" method="_on_build_point_removed_item"]

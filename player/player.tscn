@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_gnnkl"]
 [ext_resource type="Script" path="res://player/Controls.gd" id="2_gn764"]
-[ext_resource type="PackedScene" uid="uid://djussbbdgfdsk" path="res://player/build_point.tscn" id="3_vpepl"]
+[ext_resource type="PackedScene" uid="uid://bx35sf76rnqel" path="res://player/build_point.tscn" id="3_vpepl"]
 [ext_resource type="PackedScene" uid="uid://dvauc7nyk0at6" path="res://ui_feedback.tscn" id="4_2ljgh"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ej6jw"]

@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://08t5uqtptjkl"]
+[gd_scene load_steps=4 format=3]
 
-[ext_resource type="PackedScene" uid="uid://btekk4skkt6cm" path="res://camp_ground.tscn" id="1_1jlv7"]
+[ext_resource type="PackedScene" uid="uid://btekk4skkt6cm" path="res://levels/assets/camp_ground.tscn" id="1_1jlv7"]
 [ext_resource type="PackedScene" uid="uid://ufpeap5elo87" path="res://tent/tent.tscn" id="2_kga7p"]
 
 [sub_resource type="Environment" id="Environment_ftuoq"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://djnlnuu22dofm"]
+[gd_scene load_steps=11 format=3 uid="uid://djnlnuu22dofm"]
 
 [ext_resource type="Script" path="res://levels/01_verdant_slopes.gd" id="1_aevsk"]
 [ext_resource type="PackedScene" uid="uid://btekk4skkt6cm" path="res://camp_ground.tscn" id="1_dosqa"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://levels/clock.gd" id="7_bx4t5"]
 [ext_resource type="Script" path="res://levels/alarm.gd" id="8_x7f7x"]
 [ext_resource type="PackedScene" uid="uid://e251fryoqay5" path="res://critter/critter.tscn" id="9_4cxjr"]
+[ext_resource type="PackedScene" uid="uid://cui6gle3wlb35" path="res://barrier.tscn" id="10_cbqie"]
 
 [node name="01_VerdantSlopes" type="Node3D"]
 process_mode = 1
@@ -45,6 +46,42 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.175838, 0, 14.4632)
 
 [node name="critter3" parent="." instance=ExtResource("9_4cxjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.99085, 9.53674e-07, 10.9023)
+
+[node name="Barrier" parent="." instance=ExtResource("10_cbqie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1299, 0, -15.2136)
+
+[node name="Barrier2" parent="." instance=ExtResource("10_cbqie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.129945, 0, -15.2136)
+
+[node name="Barrier3" parent="." instance=ExtResource("10_cbqie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.87006, 0, -15.2136)
+
+[node name="Barrier4" parent="." instance=ExtResource("10_cbqie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1299, 0, 14.7864)
+
+[node name="Barrier5" parent="." instance=ExtResource("10_cbqie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.129945, 0, 14.7864)
+
+[node name="Barrier6" parent="." instance=ExtResource("10_cbqie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.87006, 0, 14.7864)
+
+[node name="Barrier7" parent="." instance=ExtResource("10_cbqie")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.8701, 0, -10.2136)
+
+[node name="Barrier8" parent="." instance=ExtResource("10_cbqie")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.8701, 0, -0.213573)
+
+[node name="Barrier9" parent="." instance=ExtResource("10_cbqie")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.8701, 0, 9.78643)
+
+[node name="Barrier10" parent="." instance=ExtResource("10_cbqie")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -15.1299, 0, -10.2136)
+
+[node name="Barrier11" parent="." instance=ExtResource("10_cbqie")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -15.1299, 0, -0.213573)
+
+[node name="Barrier12" parent="." instance=ExtResource("10_cbqie")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -15.1299, 0, 9.78643)
 
 [connection signal="placed_item" from="Player/BuildPoint" to="BuildManager" method="_on_build_point_placed_item"]
 [connection signal="removed_item" from="Player/BuildPoint" to="BuildManager" method="_on_build_point_removed_item"]

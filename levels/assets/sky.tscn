@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3]
 
-[ext_resource type="Script" path="res://sky.gd" id="1_hj4v8"]
+[ext_resource type="Script" path="res://levels/assets/sky.gd" id="1_hj4v8"]
 
 [sub_resource type="Environment" id="Environment_g84ct"]
 background_mode = 1

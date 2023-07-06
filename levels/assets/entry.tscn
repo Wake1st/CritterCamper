@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgba7pf3blkj"]
+[gd_scene load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://entry.gd" id="1_7curo"]
+[ext_resource type="Script" path="res://levels/assets/entry.gd" id="1_7curo"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_sv5wk"]
 size = Vector3(5, 4, 1)

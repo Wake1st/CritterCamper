@@ -6,7 +6,7 @@ var rotation:= Vector2.ZERO
 
 var action:bool = false
 var undo:bool = false
-var sleep:bool = false
+var buildMode:bool = false
 
 
 func _capture()->Controls:
@@ -24,6 +24,6 @@ func _capture()->Controls:
 	
 	action = Input.is_action_just_pressed("action")
 	undo = Input.is_action_just_pressed("undo_action")
-	sleep = Input.is_action_just_pressed("sleep")
+	buildMode = Input.is_action_just_pressed("build")
 	
 	return self

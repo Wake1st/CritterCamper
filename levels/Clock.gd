@@ -30,7 +30,7 @@ func _physics_process(delta):
 		tickGap = 0.0
 		
 		var timeLeft = (ceili(time_left)/secPerDay)*hourPerDay
-		print(timeLeft)
+		
 		var hoursLeft = int(timeLeft)
 		hoursLeft = 12 if hoursLeft == 0 else hoursLeft
 		var currentHour = int(hourPerDay - 1 - hoursLeft) % int(hourPerDay/2)

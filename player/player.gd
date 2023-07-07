@@ -30,11 +30,11 @@ var sleeping:= false:
 func _physics_process(delta):
 	var controls = controlCapture._capture()
 	
-	if controls.sleep:
-		sleeping = !sleeping
-	
 	if sleeping:
-		return
+		if controls.action:
+			sleeping = false
+		else:
+			return
 	
 	rotation.y = controls.rotation.x * rotMag.y
 	$CameraPivot.rotation.x = controls.rotation.y * rotMag.x
@@ -47,17 +47,15 @@ func _physics_process(delta):
 	velocity = global_transform.basis * controls.direction * speed * delta
 	move_and_slide()
 	
-	if controls.action:
-		if %BuildPoint.placing:
-			var placed = !%BuildPoint.placed
-			%BuildPoint.placed = placed
-			%BuildPoint.placing = false
-		else:
-			%BuildPoint.placing = true
+	if controls.buildMode:
+		%BuildPoint.placing = !%BuildPoint.placing
 	
-	if controls.undo:
-		if %BuildPoint.placing:
-			%BuildPoint.placing = false
+	if %BuildPoint.placing == true:
+		if controls.action:
+			%BuildPoint.placed = true
+		
+		if controls.undo:
+			%BuildPoint.placed = false
 
 
 func _on_alarm_timeout():

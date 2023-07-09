@@ -13,6 +13,10 @@ signal awake
 
 @export var controlCapture:Controls
 
+var nearTent:=false
+var sleepPosition:Node3D
+var exitPosition:Node3D
+
 
 var sleeping:= false:
 	get:
@@ -21,9 +25,13 @@ var sleeping:= false:
 		sleeping = value
 		if sleeping:
 			emit_signal("asleep")
+			global_position = sleepPosition.global_position
+			transform.basis = transform.basis.orthonormalized()
 			Engine.time_scale = 60
 		else:
 			emit_signal("awake")
+			global_position = exitPosition.global_position
+			transform.basis = transform.basis.orthonormalized()
 			Engine.time_scale = 1
 
 
@@ -35,7 +43,16 @@ func _physics_process(delta):
 			sleeping = false
 		else:
 			return
-	
+	else:
+		move_player(delta, controls)
+		
+		build(controls)
+		
+		if nearTent and controls.action:
+			sleeping = true
+
+
+func move_player(delta:float, controls:Controls):
 	rotation.y = controls.rotation.x * rotMag.y
 	$CameraPivot.rotation.x = controls.rotation.y * rotMag.x
 	$CameraPivot.rotation_degrees.x = clamp(
@@ -46,7 +63,9 @@ func _physics_process(delta):
 	
 	velocity = global_transform.basis * controls.direction * speed * delta
 	move_and_slide()
-	
+
+
+func build(controls:Controls):
 	if controls.buildMode:
 		%BuildPoint.placing = !%BuildPoint.placing
 	

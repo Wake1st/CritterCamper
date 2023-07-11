@@ -5,7 +5,7 @@ albedo_color = Color(0, 0.447059, 0.14902, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_6i8ty"]
 material = SubResource("StandardMaterial3D_a6n04")
-size = Vector2(30, 30)
+size = Vector2(50, 50)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_rkxqc"]
 

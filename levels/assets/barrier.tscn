@@ -1,10 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cui6gle3wlb35"]
+[gd_scene load_steps=7 format=3 uid="uid://cui6gle3wlb35"]
+
+[ext_resource type="Material" uid="uid://bmvw6rj42pe7h" path="res://levels/assets/barrier.tres" id="1_6lqah"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_n7a0f"]
 size = Vector3(10, 0.2, 0.2)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o3ngb"]
-albedo_color = Color(0.87451, 0.176471, 0, 0.196078)
 
 [sub_resource type="BoxMesh" id="BoxMesh_05qar"]
 size = Vector3(2, 0.2, 0.2)
@@ -12,41 +11,86 @@ size = Vector3(2, 0.2, 0.2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_bm8fv"]
 size = Vector3(10, 2, 0.2)
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_y74jb"]
+top_radius = 0.05
+bottom_radius = 0.05
+height = 4.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yovbi"]
+albedo_color = Color(0.101961, 0.0784314, 0.0941176, 1)
+
 [node name="Barrier" type="StaticBody3D"]
 collision_layer = 2
 
-[node name="Mesh" type="Node3D" parent="."]
+[node name="FenceMesh" type="Node3D" parent="."]
 
-[node name="MiddleBar" type="MeshInstance3D" parent="Mesh"]
+[node name="MiddleBar" type="MeshInstance3D" parent="FenceMesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("BoxMesh_n7a0f")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_o3ngb")
+surface_material_override/0 = ExtResource("1_6lqah")
 
-[node name="TopBar" type="MeshInstance3D" parent="Mesh"]
+[node name="TopBar" type="MeshInstance3D" parent="FenceMesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 0)
 mesh = SubResource("BoxMesh_n7a0f")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_o3ngb")
+surface_material_override/0 = ExtResource("1_6lqah")
 
-[node name="CenterPost" type="MeshInstance3D" parent="Mesh"]
+[node name="CenterPost" type="MeshInstance3D" parent="FenceMesh"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("BoxMesh_05qar")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_o3ngb")
+surface_material_override/0 = ExtResource("1_6lqah")
 
-[node name="LeftPost" type="MeshInstance3D" parent="Mesh"]
+[node name="LeftPost" type="MeshInstance3D" parent="FenceMesh"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -5, 1, 0)
 mesh = SubResource("BoxMesh_05qar")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_o3ngb")
+surface_material_override/0 = ExtResource("1_6lqah")
 
-[node name="RightPost" type="MeshInstance3D" parent="Mesh"]
+[node name="RightPost" type="MeshInstance3D" parent="FenceMesh"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 5, 1, 0)
 mesh = SubResource("BoxMesh_05qar")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_o3ngb")
+surface_material_override/0 = ExtResource("1_6lqah")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_bm8fv")
+
+[node name="LightsMesh" type="Node3D" parent="."]
+
+[node name="LeftPole" type="MeshInstance3D" parent="LightsMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, 0)
+mesh = SubResource("CylinderMesh_y74jb")
+surface_material_override/0 = SubResource("StandardMaterial3D_yovbi")
+
+[node name="CenterPole" type="MeshInstance3D" parent="LightsMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("CylinderMesh_y74jb")
+surface_material_override/0 = SubResource("StandardMaterial3D_yovbi")
+
+[node name="RightPole" type="MeshInstance3D" parent="LightsMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2, 0)
+mesh = SubResource("CylinderMesh_y74jb")
+surface_material_override/0 = SubResource("StandardMaterial3D_yovbi")
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="LeftLight" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 4, 0)
+light_color = Color(0.772549, 0.968627, 0.427451, 1)
+omni_range = 18.0
+omni_attenuation = 1.8025
+
+[node name="CenterLight" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+light_color = Color(0.772549, 0.968627, 0.427451, 1)
+omni_range = 18.0
+omni_attenuation = 1.8025
+
+[node name="RightLight" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4, 0)
+light_color = Color(0.772549, 0.968627, 0.427451, 1)
+omni_range = 18.0
+omni_attenuation = 1.8025

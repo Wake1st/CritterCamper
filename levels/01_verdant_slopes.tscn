@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://sd426adtlh6b"]
+[gd_scene load_steps=13 format=3 uid="uid://sd426adtlh6b"]
 
 [ext_resource type="Script" path="res://levels/01_verdant_slopes.gd" id="1_aevsk"]
 [ext_resource type="PackedScene" uid="uid://btekk4skkt6cm" path="res://levels/assets/camp_ground.tscn" id="1_dosqa"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" path="res://levels/assets/entry.tscn" id="10_a3ges"]
 [ext_resource type="PackedScene" uid="uid://cui6gle3wlb35" path="res://levels/assets/barrier.tscn" id="10_cbqie"]
 [ext_resource type="PackedScene" uid="uid://dfatudiysp0v4" path="res://levels/poi_manager.tscn" id="11_ut5et"]
+[ext_resource type="PackedScene" uid="uid://cpbjtj06d4i5r" path="res://levels/assets/camp_fire.tscn" id="12_fccno"]
 
 [node name="01_VerdantSlopes" type="Node3D"]
 process_mode = 1
@@ -19,6 +20,7 @@ script = ExtResource("1_aevsk")
 [node name="CampGround" parent="." instance=ExtResource("1_dosqa")]
 
 [node name="Player" parent="." instance=ExtResource("2_y3av3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 
 [node name="PlayerSpawn" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
@@ -89,6 +91,8 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -15.12
 
 [node name="Entry" parent="." instance=ExtResource("10_a3ges")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14)
+
+[node name="CampFire" parent="." instance=ExtResource("12_fccno")]
 
 [connection signal="placed_item" from="Player/BuildPoint" to="BuildManager" method="_on_build_point_placed_item"]
 [connection signal="removed_item" from="Player/BuildPoint" to="BuildManager" method="_on_build_point_removed_item"]

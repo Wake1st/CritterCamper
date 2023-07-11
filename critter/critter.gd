@@ -12,6 +12,8 @@ var movement:=Vector3.ZERO
 @export var idleSeconds = 6
 var idling:= true
 
+@export var poiManager:Node3D
+
 
 func _ready():
 	jouneyCountdown = jouneySeconds
@@ -22,6 +24,7 @@ func _physics_process(delta):
 	if idling:
 		idle(delta)
 	else:
+		
 		travel(delta)
 
 
@@ -29,8 +32,21 @@ func idle(delta:float):
 	idleCountdown -= delta
 	if idleCountdown < 0.0:
 		idleCountdown = idleSeconds
-		movement = rand_direction()
 		idling = false
+		
+		new_movement()
+
+
+func new_movement():
+		if randi_range(0,2) > 1:
+			movement = rand_direction()
+		else:
+			var pois = poiManager.get_pois()
+			var i = randi_range(
+				0,
+				pois.size()-1
+			)
+			movement = (pois[i] - global_position) * .1
 
 
 func travel(delta:float):

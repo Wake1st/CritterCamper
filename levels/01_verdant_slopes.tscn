@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://sd426adtlh6b"]
+[gd_scene load_steps=12 format=3 uid="uid://sd426adtlh6b"]
 
 [ext_resource type="Script" path="res://levels/01_verdant_slopes.gd" id="1_aevsk"]
 [ext_resource type="PackedScene" uid="uid://btekk4skkt6cm" path="res://levels/assets/camp_ground.tscn" id="1_dosqa"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://e251fryoqay5" path="res://critter/critter.tscn" id="9_4cxjr"]
 [ext_resource type="PackedScene" path="res://levels/assets/entry.tscn" id="10_a3ges"]
 [ext_resource type="PackedScene" uid="uid://cui6gle3wlb35" path="res://levels/assets/barrier.tscn" id="10_cbqie"]
+[ext_resource type="PackedScene" uid="uid://dfatudiysp0v4" path="res://levels/poi_manager.tscn" id="11_ut5et"]
 
 [node name="01_VerdantSlopes" type="Node3D"]
 process_mode = 1
@@ -21,6 +22,9 @@ script = ExtResource("1_aevsk")
 
 [node name="PlayerSpawn" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+
+[node name="POIManager" parent="." node_paths=PackedStringArray("player") instance=ExtResource("11_ut5et")]
+player = NodePath("../Player")
 
 [node name="BuildManager" type="Node3D" parent="."]
 script = ExtResource("5_3wca5")
@@ -35,14 +39,17 @@ script = ExtResource("7_bx4t5")
 [node name="Alarm" type="Timer" parent="."]
 script = ExtResource("8_x7f7x")
 
-[node name="critter" parent="." instance=ExtResource("9_4cxjr")]
+[node name="critter" parent="." node_paths=PackedStringArray("poiManager") instance=ExtResource("9_4cxjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.76438, 9.53674e-07, 11.2026)
+poiManager = NodePath("../POIManager")
 
-[node name="critter2" parent="." instance=ExtResource("9_4cxjr")]
+[node name="critter2" parent="." node_paths=PackedStringArray("poiManager") instance=ExtResource("9_4cxjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.175838, 0, 14.4632)
+poiManager = NodePath("../POIManager")
 
-[node name="critter3" parent="." instance=ExtResource("9_4cxjr")]
+[node name="critter3" parent="." node_paths=PackedStringArray("poiManager") instance=ExtResource("9_4cxjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.99085, 9.53674e-07, 10.9023)
+poiManager = NodePath("../POIManager")
 
 [node name="Barrier" parent="." instance=ExtResource("10_cbqie")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1299, 0, -15.2136)

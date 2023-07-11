@@ -7,7 +7,7 @@
 
 [node name="critter" type="CharacterBody3D"]
 collision_layer = 4
-collision_mask = 0
+collision_mask = 7
 script = ExtResource("1_e4ffa")
 
 [node name="critter" parent="." instance=ExtResource("2_tbucm")]
